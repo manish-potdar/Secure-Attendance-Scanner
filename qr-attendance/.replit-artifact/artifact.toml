@@ -1,0 +1,27 @@
+kind = "mobile"
+previewPath = "/"
+title = "QR Attendance Scanner"
+version = "1.0.0"
+id = "artifacts/qr-attendance"
+router = "expo-domain"
+
+[[integratedSkills]]
+name = "expo"
+version = "1.0.0"
+
+[[services]]
+ensurePreviewReachable = "/status"
+name = "expo"
+paths = [ "/" ]
+localPort = 22987
+
+[services.development]
+run = "pnpm --filter @workspace/qr-attendance run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/qr-attendance", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/qr-attendance", "run", "serve" ]
+
+[services.env]
+PORT = "22987"
+BASE_PATH = "/"
